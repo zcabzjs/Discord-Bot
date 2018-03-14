@@ -1,0 +1,12 @@
+{
+  "name": "sim's bot",
+  "version": "1.0.0",
+  "description": "My own Discord bot",
+  "main": "bot.js",
+  "author": "ZI JIAN SIM",
+  "dependencies": {
+    "discord.io": "github:woor/discord.io#gateway_v6",
+    "promise": "^8.0.1",
+    "winston": "^3.0.0-rc2"
+  }
+}
