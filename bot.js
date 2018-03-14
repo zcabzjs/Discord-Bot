@@ -114,7 +114,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                   setTimeout(function(){
                     bot.sendMessage({
                         to: channelID,
-                        message: rouletteCounter
+                        message: listRoulette()
                     });
                   }, 1000);
                   // bot.sendMessage({
@@ -195,7 +195,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         setTimeout(function(){
                           bot.sendMessage({
                               to: channelID,
-                              message: rouletteCounter
+                              message: listRoulette()
                           });
                         }, 4500);
                       }
@@ -302,34 +302,42 @@ function resetRoulette(){
   luckyNumber = null;
 }
 
-function roulette(success, user, callback){
-  bot.sendMessage({
-      to: channelID,
-      message: user + ' bravely pulls the trigger.'
-  });
-  sleep(2000);
-  callback(success, user);
-}
-function roulette2(success, user, callback){
-  bot.sendMessage({
-      to: channelID,
-      message: 'and....'
-  });
-  sleep(2000);
-  callback(success, user);
-}
-function roulette3(success, user, callback){
-  if(success){
-    bot.sendMessage({
-        to: channelID,
-        message: user + ' lives to tell the tale. Perhaps you would want to try again?'
-    });
+function listRoulette(){
+  var string = '';
+  for(var i in rouletteCounter){
+    string += rouletteCounter[i] + '  ';
   }
-  else{
-    bot.sendMessage({
-        to: channelID,
-        message: 'BOOM!!! Guess it\' about time ' + user + '\'s luck ran out... Try again?'
-    });
-    callback();
-  }
+  return string;
 }
+
+// function roulette(success, user, callback){
+//   bot.sendMessage({
+//       to: channelID,
+//       message: user + ' bravely pulls the trigger.'
+//   });
+//   sleep(2000);
+//   callback(success, user);
+// }
+// function roulette2(success, user, callback){
+//   bot.sendMessage({
+//       to: channelID,
+//       message: 'and....'
+//   });
+//   sleep(2000);
+//   callback(success, user);
+// }
+// function roulette3(success, user, callback){
+//   if(success){
+//     bot.sendMessage({
+//         to: channelID,
+//         message: user + ' lives to tell the tale. Perhaps you would want to try again?'
+//     });
+//   }
+//   else{
+//     bot.sendMessage({
+//         to: channelID,
+//         message: 'BOOM!!! Guess it\' about time ' + user + '\'s luck ran out... Try again?'
+//     });
+//     callback();
+//   }
+// }
